@@ -1,0 +1,10 @@
+{
+  "name": "AgriBridge — Smart Agricultural Procurement & Direct Marketplace",
+  "description": "Government-scale agricultural digital platform connecting farmers, procurement centres, officers, buyers, and assisted access staff with intelligent slot booking, live queue tracking, and direct surplus marketplace.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

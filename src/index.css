@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #0f172a;
+    background-color: #fcfdfe;
+  }
+
+  html.dark {
+    color-scheme: dark;
+    /* Completely Dark OLED / Deep Black Palette */
+    --color-slate-950: #000000;
+    --color-slate-900: #000000;
+    --color-slate-850: #08080a;
+    --color-slate-800: #0d0d10;
+    --color-slate-750: #141418;
+    --color-slate-700: #1c1c22;
+    --color-slate-600: #383842;
+    --color-slate-500: #71717a;
+    --color-slate-400: #a1a1aa;
+    --color-slate-300: #d4d4d8;
+    --color-slate-200: #e4e4e7;
+    --color-slate-100: #f4f4f6;
+    --color-slate-50: #fafafa;
+
+    --color-gray-950: #000000;
+    --color-gray-900: #000000;
+    --color-gray-800: #0d0d10;
+    --color-gray-700: #1c1c22;
+
+    --color-zinc-950: #000000;
+    --color-zinc-900: #000000;
+    --color-zinc-800: #0d0d10;
+    --color-zinc-700: #1c1c22;
+
+    --color-neutral-950: #000000;
+    --color-neutral-900: #000000;
+    --color-neutral-800: #0d0d10;
+    --color-neutral-700: #1c1c22;
+
+    --color-emerald-950: #021a0d;
+    --color-emerald-900: #042e1b;
+  }
+
+  html.dark body {
+    color: #f8fafc;
+    background-color: #000000;
+  }
+
+  h1, h2, h3, h4, .font-heading {
+    font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  code, kbd, samp, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Fallback for un-suffixed white surfaces and borders in dark mode */
+html.dark:not(.printing-active) .bg-white:not(.print-canvas-page, [class*="dark:bg-"]) {
+  background-color: #050506;
+}
+html.dark:not(.printing-active) .bg-slate-50:not([class*="dark:bg-"]) {
+  background-color: #0b0b0e;
+}
+html.dark:not(.printing-active) .bg-slate-100:not([class*="dark:bg-"]) {
+  background-color: #121216;
+}
+html.dark:not(.printing-active) .border-slate-200:not([class*="dark:border-"]),
+html.dark:not(.printing-active) .border-slate-300:not([class*="dark:border-"]) {
+  border-color: #1c1c22;
+}
+html.dark:not(.printing-active) .text-slate-900:not([class*="dark:text-"]) {
+  color: #f4f4f6;
+}
+html.dark:not(.printing-active) .text-slate-800:not([class*="dark:text-"]) {
+  color: #e4e4e7;
+}
+html.dark:not(.printing-active) .text-slate-700:not([class*="dark:text-"]) {
+  color: #d4d4d8;
+}
+
+/* Custom crisp micro-scrollbar for tables and navigation */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #27272a;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+@media print {
+  header, 
+  aside, 
+  nav, 
+  footer, 
+  #mobile-sidebar-toggle-btn, 
+  button, 
+  .no-print,
+  #voice-assistant-modal-container,
+  #logout-dialog-container {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body.printing-active #root > *:not(#print-modal-container) {
+    display: none !important;
+  }
+
+  body.printing-active #print-modal-container {
+    position: static !important;
+    display: block !important;
+    background: transparent !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  #printable-government-document {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 8mm !important;
+    box-shadow: none !important;
+    border: 2px solid #000000 !important;
+    border-radius: 0 !important;
+    page-break-inside: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 8mm;
+  }
+}
